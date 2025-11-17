@@ -5,7 +5,7 @@ import numpy as np
 import os
 
 app = Flask(__name__)
-CORS(app, origins=["http://localhost:5173", "https://lungcancerpredicto.netlify.app/"])
+CORS(app, origins=["http://localhost:5173", "https://lungcancerpredicto.netlify.app"])
 
 # Load your saved model
 model = joblib.load('DecisionTreeModel.pkl')
