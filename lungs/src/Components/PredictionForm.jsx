@@ -112,7 +112,7 @@ export default function LungCancerPredictor() {
           "SHORTNESS OF BREATH": Number(formData.SHORTNESS_OF_BREATH),
           "SWALLOWING DIFFICULTY": Number(formData.SWALLOWING_DIFFICULTY),
           "CHEST PAIN": Number(formData.CHEST_PAIN),
-          "GENDER_M": Boolean(formData.gender),
+          "GENDER_M": formData.gender === "True",
         }),
       });
 
@@ -143,6 +143,23 @@ export default function LungCancerPredictor() {
         level: "ERROR",
         description: "Unable to process prediction. Please try again.",
       });
+         setFormData({
+        gender: '',
+        AGE: '',
+        SMOKING: '',
+        YELLOW_FINGERS: '',
+        ANXIETY: '',
+        PEER_PRESSURE: '',
+        CHRONIC_DISEASE: '',
+        FATIGUE: '',
+        ALLERGY: '',
+        WHEEZING: '',
+        ALCOHOL_CONSUMING: '',
+        COUGHING: '',
+        SHORTNESS_OF_BREATH: '',
+        SWALLOWING_DIFFICULTY: '',
+        CHEST_PAIN: ''
+      })
     }
   };
   const getRiskColor = (level) => {
@@ -181,8 +198,8 @@ export default function LungCancerPredictor() {
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
                 >
                   <option value="">Select...</option>
-                  <option value="true">Male</option>
-                  <option value="false">Female</option>
+                  <option value="True">Male</option>
+                  <option value="False">Female</option>
                 </select>
               </div>
 
@@ -190,8 +207,8 @@ export default function LungCancerPredictor() {
                 <label className="block text-sm font-medium text-gray-700 mb-2">Age</label>
                 <input
                   type="number"
-                  name="age"
-                  // value={formData.AGE}
+                  name="AGE"
+                  value={formData.AGE}
                   onChange={handleChange}
                   required
                   min="1"
